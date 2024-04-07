@@ -27,6 +27,8 @@ struct Const {
     static let reviewLink = "https://apps.apple.com/app/id1406084758?action=write-review"
     static let showAppsButtonTitle = "More by Daniel Springer"
     static let appsLink = "https://apps.apple.com/developer/id1402417666"
+    static let donate = "Sponser this project"
+    static let donationLink = "https://cash.app/$DSpringerOfficial"
     static let yesMessage = "Yes"
     static let noMessage = "No"
     static let okMessage = "OK"

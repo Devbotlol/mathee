@@ -72,8 +72,12 @@ class MenuViewController: UIViewController, UITableViewDataSource,
         }
         let review = UIAction(title: Const.leaveReview,
                               image: UIImage(systemName: "hand.thumbsup"), state: .off) { _ in
-            self.requestReview()
+            self.openLink(link: Const.reviewLink)
         }
+        let donate = UIAction(title: Const.donate,
+                               image: UIImage(systemName: "dollarsign.circle"), state: .off) { _ in
+            self.openLink(link: Const.donationLink)
+         }
         let moreApps = UIAction(title: Const.showAppsButtonTitle,
                                 image: UIImage(systemName: "apps.iphone"),
                                 state: .off) { _ in
@@ -95,7 +99,7 @@ class MenuViewController: UIViewController, UITableViewDataSource,
 
         let infoMenu = UIMenu(title: myTitle, image: nil, identifier: .none,
                               options: .displayInline,
-                              children: [emailAction, review, shareApp, moreApps])
+                              children: [emailAction, review, shareApp, donate, moreApps])
         return infoMenu
     }
 
@@ -272,15 +276,12 @@ extension MenuViewController: MFMailComposeViewControllerDelegate {
 
 
 extension MenuViewController {
-
-
-    func requestReview() {
+    func openLink(link: String) {
         // Note: Replace the XXXXXXXXXX below with the App Store ID for your app
         //       You can find the App Store ID in your app's product URL
-        guard let writeReviewURL = URL(string: Const.reviewLink)
+        guard let writeReviewURL = URL(string: link)
         else {
             fatalError("expected valid URL")
-
         }
         UIApplication.shared.open(
             writeReviewURL,
@@ -288,7 +289,6 @@ extension MenuViewController {
             completionHandler: nil)
     }
 }
-
 
 // Helper function inserted by Swift 4.2 migrator.
 
